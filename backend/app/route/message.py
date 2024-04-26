@@ -10,12 +10,13 @@ def send_message_route():
     sender_id = request.json.get('sender_id')
     receiver_id = request.json.get('receiver_id')
     message = request.json.get('message')
+    iv = request.json.get('iv')
     key = request.json.get('key')
 
-    if not sender_id or not receiver_id or not message or not key:
+    if not sender_id or not receiver_id or not message or not key or not iv:
         return response("", 'Invalid data', 400)
 
-    new_message = send_message(sender_id, receiver_id, message, key)
+    new_message = send_message(sender_id, receiver_id, message, key, iv)
     if not new_message:
         return response("", 'Invalid receiver ID', 400)
 
@@ -24,8 +25,8 @@ def send_message_route():
 
 @message_bp.route('/', methods=['GET'])
 def get_messages_route():
-    client_id = request.json.get('client_id')
-    key = request.json.get('key')
+    client_id = request.args.get('client_id')
+    key = request.args.get('key')
 
     if not client_id or not key:
         return response("", 'Client id and key are required', 400)

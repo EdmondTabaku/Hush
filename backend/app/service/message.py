@@ -3,10 +3,11 @@ from app.service.client import is_valid_client_id, get_client
 from app import logger
 
 class Message:
-    def __init__(self, sender_id, receiver_id, message):
+    def __init__(self, sender_id, receiver_id, message, iv):
         self.sender_id = sender_id
         self.receiver_id = receiver_id
         self.message = message
+        self.iv = iv
         self.created_at = time.time()
 
     def __str__(self):
@@ -18,7 +19,10 @@ MESSAGES = {}
 """
 Send message to client
 """
-def send_message(sender_id, receiver_id, message, key):
+def send_message(sender_id, receiver_id, message, key, iv):
+    sender_id = sender_id.upper()
+    receiver_id = receiver_id.upper()
+
     if not is_valid_client_id(sender_id):
         logger.error(f'Invalid sender id: {sender_id}')
         return None
@@ -32,7 +36,7 @@ def send_message(sender_id, receiver_id, message, key):
         logger.error(f'Invalid sender key: {key}')
         return None
 
-    new_message = Message(sender_id, receiver_id, message)
+    new_message = Message(sender_id, receiver_id, message, iv)
     MESSAGES[receiver_id] = MESSAGES.get(receiver_id, []) + [new_message]
     logger.info(f'Message sent to client {receiver_id}')
 
@@ -43,6 +47,7 @@ def send_message(sender_id, receiver_id, message, key):
 Get messages for a specific client
 """
 def get_messages_for_client(client_id, key):
+    client_id = client_id.upper()
     if not is_valid_client_id(client_id):
         logger.error(f'Invalid client id: {client_id}')
         return None
@@ -53,7 +58,6 @@ def get_messages_for_client(client_id, key):
         return None
 
     messages = MESSAGES.get(client_id, [])
-    logger.info(f'Messages retrieved for client {client_id}')
 
     messages_json = []
     for message in messages:
