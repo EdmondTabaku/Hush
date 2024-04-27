@@ -5,6 +5,7 @@
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+  background-color: #000;
 }
 
 .container {
@@ -32,6 +33,7 @@
   padding: 10px;
   border-radius: 5px;
   background-color: #282828;
+  color: #fff;
   width: fit-content;
   max-width: 100%;
   flex-wrap: wrap;
