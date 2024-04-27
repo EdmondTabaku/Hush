@@ -24,6 +24,10 @@
   gap: 10px;
 }
 
+.clientId {
+  color: #fff;
+}
+
 .messages {
   display: flex;
   flex-direction: column;

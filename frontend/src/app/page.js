@@ -131,7 +131,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
         <div className={styles.client}>
-            <h1>{client_id}</h1>
+            <h1 className={styles.clientId}>{client_id}</h1>
             <IconButton onClick={() => {
                 getClient()
                 getMessages(client_id, key)
