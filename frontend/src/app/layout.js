@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Hush",
-  description: "Anonimous end-to-end encrypted chat",
+  description: "Anonymous end-to-end encrypted chat",
 };
 
 export default function RootLayout({ children }) {

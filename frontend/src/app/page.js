@@ -19,7 +19,7 @@ export default function Home() {
   const [alertMessage, setAlertMessage] = useState('');
   const [alertType, setAlertType] = useState('danger');
 
-  const backend = process.env.NEXT_PUBLIC_XPRESS_API_URL || "http://localhost:7000";
+  const backend = process.env.NEXT_PUBLIC_HUSH_API_URL || "http://localhost:7000";
 
   useEffect(() => {
     // Get the client_id and key from the local storage
