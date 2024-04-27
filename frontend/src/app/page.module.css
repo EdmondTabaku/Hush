@@ -18,6 +18,12 @@
   margin-top: 20px;
 }
 
+.client {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .messages {
   display: flex;
   flex-direction: column;

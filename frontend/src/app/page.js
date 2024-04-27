@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import {useEffect, useState} from "react";
 import {IconButton, Input, Textarea} from "@mui/joy";
 import SendIcon from '@mui/icons-material/Send';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import {Snackbar} from "@mui/joy";
 import {encryptMessage, decryptMessage} from "@/util/encrypt";
 
@@ -129,8 +130,22 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1>{client_id}</h1>
-      <div className={styles.container}>
+        <div className={styles.client}>
+            <h1>{client_id}</h1>
+            <IconButton onClick={() => {
+                getClient()
+                getMessages(client_id, key)
+            }}
+            sx={{
+                '&:hover': {
+                    backgroundColor: "#3d3d3d",
+                }
+            }}
+            >
+                <RefreshIcon/>
+            </IconButton>
+        </div>
+        <div className={styles.container}>
           <div className={styles.messages}>
               {messages.map((msg, index) => (
                   <div key={msg.id} className={styles.message} id={index === messages.length - 1 ? "last-msg" : ""}>
