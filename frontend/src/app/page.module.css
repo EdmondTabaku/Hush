@@ -1,0 +1,101 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 20px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #282828;
+  width: fit-content;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.msgHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.msgText {
+  max-width: 100%;
+}
+
+.textarea {
+  min-width: 500px; }
+.sender {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.send {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+.sendHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.end {
+  align-self: center;
+  font-size: 13px;
+  color: #a4a4a4;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .main {
+    padding: 40px 10px !important;
+  }
+
+  .textarea {
+    min-width: auto;
+  }
+
+  .sendHeader {
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+  }
+
+  .send {
+    justify-content: space-between;
+  }
+
+  .sendButton {
+    vertical-align: bottom;
+    align-self: flex-end;
+  }
+}
